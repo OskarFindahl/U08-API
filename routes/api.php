@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RecipeListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,6 @@ Route::group([
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']);    
 });
+
+Route::get('/list', [RecipeListController::class, 'index']);
+Route::post('/list', [RecipeListController::class, 'store']);
