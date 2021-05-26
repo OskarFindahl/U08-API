@@ -7,6 +7,16 @@ use App\Models\RecipeList;
 
 class RecipeListController extends Controller
 {
+
+
+
+    public function __construct() {
+        $this->middleware('auth:api');
+    }
+   
+   
+
+
     public function index() 
     {
         return RecipeList::all();
