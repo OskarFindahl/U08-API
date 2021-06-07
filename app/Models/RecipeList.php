@@ -9,10 +9,16 @@ class RecipeList extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'item_id'];
+    protected $fillable = ['user_id', 'user_recipe_list_name_id', 'item_id'];
 
 
     public function users(){
         return $this->belongsTo(User::class);
     }
+
+    public function userRecipeListName(){
+        return $this->belongsTo(UserRecipeListName::class);
+    }
+
+
 }

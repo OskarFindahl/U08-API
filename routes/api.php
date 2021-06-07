@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RecipeListController;
+use App\Http\Controllers\UserRecipeListNameController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,9 @@ Route::group([
 
   Route::get('/list', [RecipeListController::class, 'index']);
     Route::post('/list', [RecipeListController::class, 'store']);   
+
+    Route::get('/listname', [UserRecipeListNameController::class, 'index']);
+    Route::post('/listname', [UserRecipeListNameController::class, 'store']);     
 });
 
 

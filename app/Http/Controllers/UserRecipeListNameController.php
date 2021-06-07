@@ -3,13 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\RecipeList;
+use App\Models\UserRecipeListName;
 
-class RecipeListController extends Controller
+class UserRecipeListNameController extends Controller
 {
-
-
-
     public function __construct() {
         $this->middleware('auth:api');
     }
@@ -19,26 +16,26 @@ class RecipeListController extends Controller
 
     public function index() 
     {
-        return RecipeList::all();
+        return UserRecipeListName::all();
     }
 
     public function show($id) 
     {
-        return RecipeList::findOrFail($id);
+        return UserRecipeListName::findOrFail($id);
     }
 
     public function store(Request $request) 
     {
         $request->validate([
-            'user_recipe_list_name_id' => 'required',
-            'item_id' => 'required',
+            'user_id' => 'required',
+            'name' => 'required',
                     
         ]);
-        return RecipeList::create($request->all());
+        return UserRecipeListName::create($request->all());
     }
 
     public function destroy($id) 
     {
-        return RecipeList::destroy($id);
+        return UserRecipeListName::destroy($id);
     }
 }
