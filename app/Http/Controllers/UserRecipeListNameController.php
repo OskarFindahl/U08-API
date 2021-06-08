@@ -16,7 +16,10 @@ class UserRecipeListNameController extends Controller
 
     public function index() 
     {
-        return UserRecipeListName::all();
+        $userId = auth()->user();
+        return UserRecipeListName::where('user_id',$userId['id'])->get();
+
+       
     }
 
     public function show($id) 
