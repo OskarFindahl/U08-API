@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Validator;
 
+use App\Models\UserRecipeListName;
+
 
 class AuthController extends Controller
 {
@@ -61,6 +63,11 @@ class AuthController extends Controller
                     $validator->validated(),
                     ['password' => bcrypt($request->password)]
                 ));
+
+              
+                $ListData = array('user_id' => $user['id'], 'name' => 'Favorites');
+                UserRecipeListName::create($ListData);
+                
 
         return response()->json([
             'message' => 'User successfully registered',
