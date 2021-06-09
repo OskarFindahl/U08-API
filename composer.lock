@@ -4861,8 +4861,10 @@
                     "aliases": {
                         "JWTAuth": "Tymon\\JWTAuth\\Facades\\JWTAuth",
                         "JWTFactory": "Tymon\\JWTAuth\\Facades\\JWTFactory"
-                    }
-                    
+                    },
+                    "providers": [
+                        "Tymon\\JWTAuth\\Providers\\LaravelServiceProvider"
+                    ]
                 }
             },
             "autoload": {
