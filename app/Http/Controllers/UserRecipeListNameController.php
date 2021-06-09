@@ -37,8 +37,11 @@ class UserRecipeListNameController extends Controller
         return UserRecipeListName::create($request->all());
     }
 
+    
+
     public function destroy($id) 
     {
-        return UserRecipeListName::destroy($id);
+        $userId = auth()->user();
+        return UserRecipeListName::where('id', $id)->where('user_id', $userId['id'])->delete();
     }
 }

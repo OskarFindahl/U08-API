@@ -46,8 +46,9 @@ if ($recipeExists === null) {
         
     }
 
-    public function destroy($id) 
+    public function destroy($ItemId, $ListId) 
     {
-        return RecipeList::destroy($id);
+        $userId = auth()->user();
+        return RecipeList::where('item_id', $ItemId)->where('user_recipe_list_name_id', $ListId)->where('user_id', $userId['id'])->delete();
     }
 }

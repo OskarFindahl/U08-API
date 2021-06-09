@@ -28,11 +28,13 @@ Route::group([
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
 
-  Route::get('/list/{ListId}', [RecipeListController::class, 'index']);
-    Route::post('/list', [RecipeListController::class, 'store']);   
+    Route::get('/list/{ListId}', [RecipeListController::class, 'index']);
+    Route::post('/list', [RecipeListController::class, 'store']);
+    Route::post('/remove/recipe/{ItemId}/list/{ListId}', [RecipeListController::class, 'destroy']);
 
     Route::get('/listname', [UserRecipeListNameController::class, 'index']);
-    Route::post('/listname', [UserRecipeListNameController::class, 'store']);     
+    Route::post('/listname', [UserRecipeListNameController::class, 'store']);
+    Route::post('remove/listname/{id}', [UserRecipeListNameController::class, 'destroy']);        
 });
 
 
