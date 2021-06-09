@@ -17,8 +17,9 @@ class CreateRecipeListsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_recipe_list_name_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_recipe_list_name_id');
             $table->string('item_id');
+            $table->string('item_name');
         });
     }
 

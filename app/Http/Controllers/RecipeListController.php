@@ -17,9 +17,11 @@ class RecipeListController extends Controller
    
 
 
-    public function index() 
+    public function index($ListId) 
     {
-        return RecipeList::all();
+        $userId = auth()->user();
+        return RecipeList::where('user_id',$userId['id'])->where('user_recipe_list_name_id',$ListId)->get();  
+        
     }
 
     public function show($id) 
@@ -32,9 +34,16 @@ class RecipeListController extends Controller
         $request->validate([
             'user_recipe_list_name_id' => 'required',
             'item_id' => 'required',
+            'item_name' => 'required',
                     
         ]);
-        return RecipeList::create($request->all());
+
+        $recipeExists = RecipeList::where('user_recipe_list_name_id', '=', $request->input('user_recipe_list_name_id'))->where('item_id', '=', $request->input('item_id'))->first();
+if ($recipeExists === null) {
+   // Member Not Found Your Kohali Stuffs Goes Here..
+   return RecipeList::create($request->all());
+}
+        
     }
 
     public function destroy($id) 

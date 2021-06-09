@@ -28,7 +28,7 @@ Route::group([
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
 
-  Route::get('/list', [RecipeListController::class, 'index']);
+  Route::get('/list/{ListId}', [RecipeListController::class, 'index']);
     Route::post('/list', [RecipeListController::class, 'store']);   
 
     Route::get('/listname', [UserRecipeListNameController::class, 'index']);
